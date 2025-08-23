@@ -8,8 +8,10 @@ use Config\Services;
 
 class StationRepository
 {
-    /** @var BaseConnection|null */
-    private $db = null; // Lazy to avoid requiring mysqli unless needed
+    /**
+     * @var BaseConnection<object, object>|null
+     */
+    private ?BaseConnection $db = null; // Lazy to avoid requiring mysqli unless needed
 
     /** @var CacheInterface|null */
     private $cache = null;
@@ -46,10 +48,10 @@ class StationRepository
         $cfg = new \Config\Stations();
 
         // Cache lookup
-        if ($cfg->enableCache) {
+    if ($cfg->enableCache === true) {
             try {
                 $this->cache = $this->cache ?? Services::cache();
-                $cached = $this->cache?->get($this->cacheKey($line));
+                $cached = $this->cache ? $this->cache->get($this->cacheKey($line)) : null;
                 if (is_array($cached)) {
                     $this->memo[$line] = $cached;
                     return $cached;
@@ -76,10 +78,12 @@ class StationRepository
 
         $stations = $this->applyConfiguredOrder($line, $stations);
 
-        if ($cfg->enableCache && ! empty($stations)) {
+    if ($cfg->enableCache === true && ! empty($stations)) {
             try {
                 $this->cache = $this->cache ?? Services::cache();
-                $this->cache?->save($this->cacheKey($line), $stations, $cfg->cacheTTL);
+                if ($this->cache) {
+                    $this->cache->save($this->cacheKey($line), $stations, $cfg->cacheTTL);
+                }
             } catch (\Throwable $e) {
                 // ignore cache errors
             }
@@ -102,7 +106,7 @@ class StationRepository
     private function fetchFromDb(string $line): array
     {
         try {
-            /** @var BaseConnection $db */
+            /** @var BaseConnection<object, object> $db */
             $db = $this->db ?? (\Config\Database::connect());
             $this->db = $db;
         } catch (\Throwable $e) {
@@ -115,9 +119,8 @@ class StationRepository
             // Prefer route order via 'seq' column when available
             $hasSeq = false;
             try {
-                if (method_exists($this->db, 'fieldExists')) {
-                    $hasSeq = $this->db->fieldExists('seq', $line);
-                }
+                $fields = $this->db->getFieldNames($line);
+                $hasSeq = is_array($fields) && in_array('seq', $fields, true);
             } catch (\Throwable $e) {
                 $hasSeq = false;
             }
@@ -131,6 +134,9 @@ class StationRepository
             }
 
             $query = $builder->get();
+            if ($query === false) {
+                return [];
+            }
             $rows = $query->getResultArray();
             $result = array_map(static function ($row) {
                 return [

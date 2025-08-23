@@ -16,13 +16,13 @@ class CtaTrainTracker
 
     public function __construct()
     {
-        // Read API key directly from environment to avoid BaseService scalar return type issues
-        $this->apiKey = function_exists('env') ? env('CTA_TRAIN_API_KEY') : getenv('CTA_TRAIN_API_KEY');
-    /**
-     * @var CURLRequest $http
-     */
-        $http = service('curlrequest');
-        $this->http = $http;
+    // Read API key safely (env() may return mixed)
+    $key = function_exists('env') ? env('CTA_TRAIN_API_KEY') : getenv('CTA_TRAIN_API_KEY');
+    $this->apiKey = is_string($key) && $key !== '' ? $key : null;
+
+    /** @var CURLRequest $http */
+    $http = service('curlrequest');
+    $this->http = $http;
     }
 
     /**
@@ -30,6 +30,25 @@ class CtaTrainTracker
      *
      * @param  int|string $mapId Station map ID
      * @return array{ok:bool,error?:string,updated?:string,station?:array,arrivals?:list<array>}
+     */
+    /**
+     * @param int|string $mapId
+     * @return array{
+     *   ok: bool,
+     *   error?: string,
+     *   updated?: string,
+     *   station?: array{name:string,id:int|string|null},
+     *   arrivals?: list<array{
+     *     route:string,
+     *     dest:string,
+     *     arrives:string,
+     *     isDue:bool,
+     *     dueText:''|'Approaching'|'Delayed',
+     *     platform:string,
+     *     run:string,
+     *     flags: array{delayed:bool, scheduled:bool, approaching:bool}
+     *   }>
+     * }
      */
     public function getArrivals($mapId): array
     {
@@ -68,7 +87,8 @@ class CtaTrainTracker
             ];
         }
 
-        $json = json_decode($resp->getBody(), true);
+    $body = (string) $resp->getBody();
+    $json = json_decode($body, true);
         if (! is_array($json) || ! isset($json['ctatt'])) {
             return [
                 'ok'    => false,
@@ -81,25 +101,25 @@ class CtaTrainTracker
         // Normalize
         $updated = $ctatt['tmst'] ?? null;
         $etas = $ctatt['eta'] ?? [];
-        $station = null;
-        $arrivals = [];
+    $station = null;
+    $arrivals = [];
 
         foreach ($etas as $eta) {
             if ($station === null) {
                 $station = [
-                    'name' => $eta['staNm'] ?? '',
-                    'id'   => $eta['staId'] ?? null,
+                    'name' => (string) ($eta['staNm'] ?? ''),
+                    'id'   => isset($eta['staId']) ? (is_numeric($eta['staId']) ? (int) $eta['staId'] : (string) $eta['staId']) : null,
                 ];
             }
 
             $arrivals[] = [
-                'route'    => $eta['rt'] ?? '',
-                'dest'     => $eta['destNm'] ?? '',
-                'arrives'  => $eta['arrT'] ?? '', // arrival time (ISO-like)
+                'route'    => (string) ($eta['rt'] ?? ''),
+                'dest'     => (string) ($eta['destNm'] ?? ''),
+                'arrives'  => (string) ($eta['arrT'] ?? ''), // arrival time (ISO-like)
                 'isDue'    => ($eta['isApp'] ?? '0') === '1' || ($eta['isDly'] ?? '0') === '1',
                 'dueText'  => $eta['isApp'] === '1' ? 'Approaching' : (($eta['isDly'] ?? '0') === '1' ? 'Delayed' : ''),
-                'platform' => $eta['stpDe'] ?? '',
-                'run'      => $eta['rn'] ?? '',
+                'platform' => (string) ($eta['stpDe'] ?? ''),
+                'run'      => (string) ($eta['rn'] ?? ''),
                 'flags'    => [
                     'delayed'     => ($eta['isDly'] ?? '0') === '1',
                     'scheduled'   => ($eta['isSch'] ?? '0') === '1',
@@ -116,11 +136,18 @@ class CtaTrainTracker
             }
         );
 
-        return [
+        $result = [
             'ok'       => true,
-            'updated'  => $updated,
-            'station'  => $station,
-            'arrivals' => $arrivals,
         ];
+
+        if (is_string($updated)) {
+            $result['updated'] = $updated;
+        }
+        if (is_array($station)) {
+            $result['station'] = $station;
+        }
+        $result['arrivals'] = $arrivals;
+
+        return $result;
     }
 }

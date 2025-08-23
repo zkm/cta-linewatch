@@ -16,7 +16,7 @@ class Lines extends BaseController
     /**
      * Show all CTA lines (legacy app entry).
      */
-    public function index()
+    public function index(): string
     {
         $data = [
             'title' => 'CTA Lines',
@@ -40,7 +40,7 @@ class Lines extends BaseController
      *
      * @param string $line Slug/color (e.g., blue, red)
      */
-    public function stations(string $line)
+    public function stations(string $line): string
     {
         $color = strtolower($line);
         $valid = ['blue','brown','green','orange','pink','purple','red','yellow'];

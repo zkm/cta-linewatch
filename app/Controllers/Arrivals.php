@@ -6,9 +6,15 @@ use App\Libraries\CtaTrainTracker;
 
 class Arrivals extends BaseController
 {
-    public function index()
+    public function index(): string
     {
-        $mapId = $this->request->getGet('mapid') ?? '';
+        $raw = $this->request->getGet('mapid');
+        $mapId = '';
+        if (is_string($raw)) {
+            $mapId = $raw;
+        } elseif (is_int($raw)) {
+            $mapId = (string) $raw;
+        }
 
         $data = [
             'title'    => 'CTA Train Arrivals',
@@ -22,6 +28,6 @@ class Arrivals extends BaseController
             $data['result'] = $tracker->getArrivals($mapId);
         }
 
-        return view('arrivals/index', $data);
+    return view('arrivals/index', $data);
     }
 }

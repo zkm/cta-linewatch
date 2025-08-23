@@ -25,7 +25,7 @@ class StationsExport extends BaseCommand
      */
     private array $allowed = ['blue','brown','green','orange','pink','purple','red','yellow'];
 
-    public function run(array $params)
+    public function run(array $params): void
     {
         $lineParam = $params[0] ?? null;
         // Prefer CodeIgniter's CLI option parsing
@@ -54,7 +54,8 @@ class StationsExport extends BaseCommand
         foreach ($lines as $line) {
             $data = $repo->getStationsByLine($line);
             if (empty($data)) {
-                CLI::warning(sprintf('[%s] No stations found, skipping.', $line));
+                // Some static analysers don't know CLI::warning(); use write with yellow
+                CLI::write(sprintf('[%s] No stations found, skipping.', $line), 'yellow');
                 continue;
             }
 
