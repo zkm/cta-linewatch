@@ -17,12 +17,12 @@ class CtaTrainTracker
     public function __construct()
     {
     // Read API key safely (env() may return mixed)
-    $key = function_exists('env') ? env('CTA_TRAIN_API_KEY') : getenv('CTA_TRAIN_API_KEY');
-    $this->apiKey = is_string($key) && $key !== '' ? $key : null;
+        $key = function_exists('env') ? env('CTA_TRAIN_API_KEY') : getenv('CTA_TRAIN_API_KEY');
+        $this->apiKey = is_string($key) && $key !== '' ? $key : null;
 
     /** @var CURLRequest $http */
-    $http = service('curlrequest');
-    $this->http = $http;
+        $http = service('curlrequest');
+        $this->http = $http;
     }
 
     /**
@@ -87,8 +87,8 @@ class CtaTrainTracker
             ];
         }
 
-    $body = (string) $resp->getBody();
-    $json = json_decode($body, true);
+        $body = (string) $resp->getBody();
+        $json = json_decode($body, true);
         if (! is_array($json) || ! isset($json['ctatt'])) {
             return [
                 'ok'    => false,
@@ -101,8 +101,8 @@ class CtaTrainTracker
         // Normalize
         $updated = $ctatt['tmst'] ?? null;
         $etas = $ctatt['eta'] ?? [];
-    $station = null;
-    $arrivals = [];
+        $station = null;
+        $arrivals = [];
 
         foreach ($etas as $eta) {
             if ($station === null) {

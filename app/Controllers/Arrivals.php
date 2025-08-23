@@ -28,6 +28,6 @@ class Arrivals extends BaseController
             $data['result'] = $tracker->getArrivals($mapId);
         }
 
-    return view('arrivals/index', $data);
+        return view('arrivals/index', $data);
     }
 }

@@ -44,11 +44,11 @@ class StationRepository
             return $this->memo[$line];
         }
 
-        // Config for data source and caching
+    // Config for data source and caching
         $cfg = new \Config\Stations();
 
-        // Cache lookup
-    if ($cfg->enableCache === true) {
+    // Cache lookup
+        if ($cfg->enableCache === true) {
             try {
                 $this->cache = $this->cache ?? Services::cache();
                 $cached = $this->cache ? $this->cache->get($this->cacheKey($line)) : null;
@@ -78,7 +78,7 @@ class StationRepository
 
         $stations = $this->applyConfiguredOrder($line, $stations);
 
-    if ($cfg->enableCache === true && ! empty($stations)) {
+        if ($cfg->enableCache === true && ! empty($stations)) {
             try {
                 $this->cache = $this->cache ?? Services::cache();
                 if ($this->cache) {
