@@ -1,0 +1,174 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'  # Triggers on version tags like v1.0.0, v2.1.3, etc.
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g., v1.0.0)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  test:
+    name: Run Tests Before Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer
+          extensions: intl, mbstring, curl, dom, gd, json, tokenizer
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+
+      - name: Run PHPUnit tests
+        run: |
+          if [ -f vendor/bin/phpunit ]; then
+            vendor/bin/phpunit
+          else
+            echo "PHPUnit not found, skipping tests"
+          fi
+
+      - name: Run PHPCS
+        run: |
+          if [ -f vendor/bin/phpcs ]; then
+            vendor/bin/phpcs -q -n --standard=PSR12 --ignore=vendor .
+          else
+            echo "PHPCS not found, skipping code style check"
+          fi
+
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Fetch full history for changelog generation
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress --no-dev --optimize-autoloader
+
+      - name: Get version from tag or input
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "version=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          else
+            echo "version=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Generate changelog
+        id: changelog
+        run: |
+          # Get the latest tag before current
+          PREVIOUS_TAG=$(git tag --sort=-version:refname | grep -v "^${{ steps.version.outputs.version }}$" | head -n 1)
+          
+          if [ -z "$PREVIOUS_TAG" ]; then
+            echo "No previous tag found, generating changelog from first commit"
+            CHANGELOG=$(git log --pretty=format:"- %s (%h)" --no-merges)
+          else
+            echo "Generating changelog from $PREVIOUS_TAG to ${{ steps.version.outputs.version }}"
+            CHANGELOG=$(git log $PREVIOUS_TAG..${{ steps.version.outputs.version }} --pretty=format:"- %s (%h)" --no-merges)
+          fi
+          
+          # Save changelog to file for use in release
+          echo "## Changes" > changelog.md
+          echo "" >> changelog.md
+          echo "$CHANGELOG" >> changelog.md
+          
+          # Also output for GitHub Actions
+          {
+            echo "changelog<<EOF"
+            echo "## Changes"
+            echo ""
+            echo "$CHANGELOG"
+            echo "EOF"
+          } >> $GITHUB_OUTPUT
+
+      - name: Create release archive
+        run: |
+          # Create a clean release archive
+          mkdir -p release-build
+          
+          # Copy application files (exclude development files)
+          rsync -av \
+            --exclude='.git*' \
+            --exclude='tests/' \
+            --exclude='build/' \
+            --exclude='writable/logs/*' \
+            --exclude='writable/cache/*' \
+            --exclude='writable/session/*' \
+            --exclude='writable/debugbar/*' \
+            --exclude='vendor/bin/' \
+            --exclude='phpunit.xml*' \
+            --exclude='phpcs.xml*' \
+            --exclude='phpstan.neon*' \
+            --exclude='scripts/' \
+            --exclude='.github/' \
+            ./ release-build/
+          
+          # Create archive
+          cd release-build
+          tar -czf ../cta-api-${{ steps.version.outputs.version }}.tar.gz .
+          cd ..
+          zip -r cta-api-${{ steps.version.outputs.version }}.zip release-build/
+
+      - name: Create GitHub Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.version.outputs.version }}
+          name: CTA API ${{ steps.version.outputs.version }}
+          body: |
+            # CTA API Release ${{ steps.version.outputs.version }}
+            
+            ${{ steps.changelog.outputs.changelog }}
+            
+            ## Installation
+            
+            1. Download and extract the release archive
+            2. Run `composer install --no-dev`
+            3. Copy `env` to `.env` and configure your settings
+            4. Point your web server to the `public/` directory
+            
+            ## API Documentation
+            
+            - [Online Documentation](https://zkm.github.io/cta-api/)
+            - [OpenAPI Specification](https://zkm.github.io/cta-api/openapi.json)
+            
+            ## Requirements
+            
+            - PHP 8.1 or higher
+            - Composer
+            - Web server (Apache/Nginx)
+            
+            ---
+            
+            **Full Changelog**: https://github.com/zkm/cta-api/compare/${{ steps.version.outputs.version }}...HEAD
+          
+          artifacts: |
+            cta-api-${{ steps.version.outputs.version }}.tar.gz
+            cta-api-${{ steps.version.outputs.version }}.zip
+          
+          draft: false
+          prerelease: false
+          generateReleaseNotes: false

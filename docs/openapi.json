@@ -1,0 +1,181 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "CTA API",
+    "description": "Chicago Transit Authority API built with CodeIgniter 4",
+    "version": "1.0.0",
+    "contact": {
+      "name": "CTA API",
+      "url": "https://github.com/zkm/cta-api"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://your-domain.com",
+      "description": "Production server"
+    },
+    {
+      "url": "http://localhost:8080",
+      "description": "Development server"
+    }
+  ],
+  "paths": {
+    "/arrivals": {
+      "get": {
+        "summary": "Get train arrival information",
+        "description": "Returns arrival information for CTA trains at specified stations",
+        "parameters": [
+          {
+            "name": "station_id",
+            "in": "query",
+            "description": "Station identifier",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "line",
+            "in": "query",
+            "description": "Train line filter (optional)",
+            "schema": {
+              "type": "string",
+              "enum": ["red", "blue", "green", "brown", "orange", "purple", "pink", "yellow"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "object"
+                    },
+                    "timestamp": {
+                      "type": "string",
+                      "format": "date-time"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lines": {
+      "get": {
+        "summary": "Get available train lines",
+        "description": "Returns information about all available CTA train lines",
+        "responses": {
+          "200": {
+            "description": "List of train lines",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "line": {
+                            "type": "string"
+                          },
+                          "color": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lines/{line}": {
+      "get": {
+        "summary": "Get stations for a specific line",
+        "description": "Returns all stations for a specific train line",
+        "parameters": [
+          {
+            "name": "line",
+            "in": "path",
+            "required": true,
+            "description": "Train line name",
+            "schema": {
+              "type": "string",
+              "enum": ["red", "blue", "green", "brown", "orange", "purple", "pink", "yellow"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of stations for the line",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "success"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "station_id": {
+                            "type": "string"
+                          },
+                          "station_name": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "error"
+          },
+          "message": {
+            "type": "string"
+          },
+          "code": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  }
+}

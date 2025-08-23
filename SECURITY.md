@@ -2,20 +2,46 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
+The following versions of CTA API are currently supported with security updates:
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 5.1.x   | :white_check_mark: |
-| 5.0.x   | :x:                |
-| 4.0.x   | :white_check_mark: |
-| < 4.0   | :x:                |
+| 1.0.x   | :white_check_mark: |
+| < 1.0   | :x:                |
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
+If you discover a security vulnerability in the CTA API, please report it responsibly:
 
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+1. **Do NOT** create a public GitHub issue for security vulnerabilities
+2. Email security concerns to: [Your Email] or create a private security advisory
+3. Include as much detail as possible:
+   - Description of the vulnerability
+   - Steps to reproduce
+   - Potential impact
+   - Suggested fix (if any)
+
+## Response Timeline
+
+- **Initial Response**: Within 48 hours
+- **Status Update**: Within 7 days
+- **Fix Timeline**: Depends on severity
+  - Critical: Within 24-48 hours
+  - High: Within 1 week
+  - Medium: Within 2 weeks
+  - Low: Next scheduled release
+
+## Security Best Practices
+
+When deploying the CTA API:
+
+- Always use HTTPS in production
+- Keep PHP and dependencies updated
+- Configure proper file permissions
+- Use environment variables for sensitive configuration
+- Enable proper logging and monitoring
+- Regularly update CodeIgniter framework
+
+## Acknowledgments
+
+We appreciate responsible disclosure and will acknowledge security researchers who help improve the security of our project.
