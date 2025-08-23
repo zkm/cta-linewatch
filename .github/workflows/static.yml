@@ -20,6 +20,7 @@ jobs:
         with:
           php-version: '8.2'
           tools: composer
+          extensions: intl, mbstring, curl, dom, gd, json, tokenizer
       - name: Install dependencies
         run: composer install --no-interaction --prefer-dist --no-progress
       - name: Ensure PHPCS is available
@@ -30,9 +31,9 @@ jobs:
       - name: Run PHPCS
         run: |
           if [ -f phpcs.xml ] || [ -f phpcs.xml.dist ]; then
-            vendor/bin/phpcs -q
+            vendor/bin/phpcs -q -n
           else
-            vendor/bin/phpcs -q --standard=PSR12 --ignore=vendor .
+            vendor/bin/phpcs -q -n --standard=PSR12 --ignore=vendor .
           fi
 
   phpstan:
@@ -44,6 +45,7 @@ jobs:
         with:
           php-version: '8.2'
           tools: composer
+          extensions: intl, mbstring, curl, dom, gd, json, tokenizer
       - name: Install dependencies
         run: composer install --no-interaction --prefer-dist --no-progress
       - name: Ensure PHPStan is available

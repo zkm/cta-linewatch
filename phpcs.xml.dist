@@ -9,6 +9,8 @@
   <exclude-pattern>public/*</exclude-pattern>
   <exclude-pattern>writable/*</exclude-pattern>
   <exclude-pattern>app/Views/*</exclude-pattern>
+  <!-- CodeIgniter Boot files perform intentional side effects; exclude to reduce noise -->
+  <exclude-pattern>app/Config/Boot/*</exclude-pattern>
 
   <rule ref="PSR12">
     <exclude name="Generic.Files.LineLength"/>
