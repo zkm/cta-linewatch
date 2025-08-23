@@ -7,15 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2025-08-23
+
 ### Added
 - GitHub Pages documentation with interactive API explorer
-- OpenAPI specification for API endpoints
+- OpenAPI specification for API endpoints  
 - Automated deployment workflow
 - Release automation with GitHub Actions
+- Interactive release script for easy version management
+- Comprehensive test suite with PHPUnit
+- Code quality tools (PHPCS, PHPStan)
+- Beautiful API documentation with CTA line styling
+- RESTful API endpoints for CTA data:
+  - `/arrivals` - Train arrival information
+  - `/lines` - Train line information  
+  - `/lines/{line}` - Stations for specific lines
 
 ### Changed
 - Migrated from legacy PHP site to CodeIgniter 4 framework
 - Updated project structure and dependencies
+- Improved security with proper vulnerability reporting
 
 ### Fixed
 - Improved code quality with PHPCS and PHPStan integration
