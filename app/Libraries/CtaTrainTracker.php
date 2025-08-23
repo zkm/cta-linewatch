@@ -16,9 +16,11 @@ class CtaTrainTracker
 
     public function __construct()
     {
-    // Read API key directly from environment to avoid BaseService scalar return type issues
-    $this->apiKey = function_exists('env') ? env('CTA_TRAIN_API_KEY') : getenv('CTA_TRAIN_API_KEY');
-        /** @var CURLRequest $http */
+        // Read API key directly from environment to avoid BaseService scalar return type issues
+        $this->apiKey = function_exists('env') ? env('CTA_TRAIN_API_KEY') : getenv('CTA_TRAIN_API_KEY');
+    /**
+     * @var CURLRequest $http
+     */
         $http = service('curlrequest');
         $this->http = $http;
     }
@@ -26,7 +28,7 @@ class CtaTrainTracker
     /**
      * Fetch arrivals for a station by map id.
      *
-     * @param int|string $mapId Station map ID
+     * @param  int|string $mapId Station map ID
      * @return array{ok:bool,error?:string,updated?:string,station?:array,arrivals?:list<array>}
      */
     public function getArrivals($mapId): array
@@ -39,16 +41,19 @@ class CtaTrainTracker
         }
 
         try {
-            $resp = $this->http->get($this->baseUrl, [
-                'query' => [
-                    'key'         => $this->apiKey,
-                    'mapid'       => (string) $mapId,
-                    'outputType'  => 'JSON',
-                ],
-                'http_errors' => false,
-                'timeout'     => 8,
-                'connect_timeout' => 5,
-            ]);
+            $resp = $this->http->get(
+                $this->baseUrl,
+                [
+                    'query'          => [
+                        'key'        => $this->apiKey,
+                        'mapid'      => (string) $mapId,
+                        'outputType' => 'JSON',
+                    ],
+                    'http_errors'     => false,
+                    'timeout'         => 8,
+                    'connect_timeout' => 5,
+                ]
+            );
         } catch (\Throwable $e) {
             return [
                 'ok'    => false,
@@ -104,9 +109,12 @@ class CtaTrainTracker
         }
 
         // Sort by arrival time if present
-        usort($arrivals, static function ($a, $b) {
-            return strcmp($a['arrives'], $b['arrives']);
-        });
+        usort(
+            $arrivals,
+            static function ($a, $b) {
+                return strcmp($a['arrives'], $b['arrives']);
+            }
+        );
 
         return [
             'ok'       => true,

@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<ruleset name="Project PHPCS">
+  <description>PHPCS rules for cta-api. Focus on PHP in app/ and tests/, ignore vendor and view templates.</description>
+
+  <file>app</file>
+  <file>tests</file>
+
+  <exclude-pattern>vendor/*</exclude-pattern>
+  <exclude-pattern>public/*</exclude-pattern>
+  <exclude-pattern>writable/*</exclude-pattern>
+  <exclude-pattern>app/Views/*</exclude-pattern>
+
+  <rule ref="PSR12">
+    <exclude name="Generic.Files.LineLength"/>
+  </rule>
+</ruleset>

@@ -20,15 +20,17 @@ class StationsExport extends BaseCommand
         '--force'    => 'Overwrite existing JSON files if present',
     ];
 
-    /** @var list<string> */
+    /**
+     * @var list<string>
+     */
     private array $allowed = ['blue','brown','green','orange','pink','purple','red','yellow'];
 
     public function run(array $params)
     {
-    $lineParam = $params[0] ?? null;
-    // Prefer CodeIgniter's CLI option parsing
-    $combined = (bool) (CLI::getOption('combined'));
-    $force    = (bool) (CLI::getOption('force'));
+        $lineParam = $params[0] ?? null;
+        // Prefer CodeIgniter's CLI option parsing
+        $combined = (bool) (CLI::getOption('combined'));
+        $force    = (bool) (CLI::getOption('force'));
 
         $lines = $this->resolveLines($lineParam);
         if (empty($lines)) {
@@ -99,7 +101,7 @@ class StationsExport extends BaseCommand
 
     /**
      * @param string $path
-     * @param mixed $payload
+     * @param mixed  $payload
      */
     private function writeJson(string $path, $payload): bool
     {

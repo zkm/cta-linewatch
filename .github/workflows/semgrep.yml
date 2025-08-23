@@ -1,0 +1,46 @@
+name: Semgrep Code Scanning
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ "**" ]
+  schedule:
+    - cron: '0 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  security-events: write
+
+jobs:
+  semgrep:
+    name: Semgrep (PHP)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python (for Semgrep cli optional deps)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install Semgrep
+        run: |
+          python -m pip install --upgrade pip
+          pip install 'semgrep==1.*'
+
+      - name: Run Semgrep with default rules
+        run: |
+          # Run Semgrep with widely-used PHP and security rulesets
+          semgrep --config=p/php --config=p/security-audit --error --sarif --output semgrep.sarif || true
+
+      - name: Upload SARIF to GitHub Code Scanning
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: semgrep.sarif
+          category: semgrep-php

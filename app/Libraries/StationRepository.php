@@ -164,7 +164,9 @@ class StationRepository
             usort($stations, static function ($a, $b) use ($index) {
                 $ia = $index[$a['sid']] ?? PHP_INT_MAX;
                 $ib = $index[$b['sid']] ?? PHP_INT_MAX;
-                if ($ia === $ib) return 0;
+                if ($ia === $ib) {
+                    return 0;
+                }
                 return $ia <=> $ib;
             });
             return $stations;
@@ -277,7 +279,9 @@ class StationRepository
 
         $stations = [];
         foreach ($data as $row) {
-            if (! is_array($row)) continue;
+            if (! is_array($row)) {
+                continue;
+            }
             $sid = isset($row['sid']) ? (int) $row['sid'] : 0;
             $name = isset($row['station']) ? (string) $row['station'] : '';
             if ($sid > 0 && $name !== '') {
