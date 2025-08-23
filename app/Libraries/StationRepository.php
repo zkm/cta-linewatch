@@ -32,7 +32,7 @@ class StationRepository
         // 1) Try to parse from legacy HTML select file
         $fromFile = $this->parseLegacyFile($line);
         if (! empty($fromFile)) {
-            return $fromFile;
+            return $this->applyConfiguredOrder($line, $fromFile);
         }
 
         // 2) Fallback to DB if available/configured
@@ -46,18 +46,66 @@ class StationRepository
 
         try {
             $builder = $this->db->table($line);
-            $builder->select('sid, station');
-            $builder->orderBy('station', 'ASC');
+
+            // Prefer route order via 'seq' column when available
+            $hasSeq = false;
+            try {
+                if (method_exists($this->db, 'fieldExists')) {
+                    $hasSeq = $this->db->fieldExists('seq', $line);
+                }
+            } catch (\Throwable $e) {
+                $hasSeq = false;
+            }
+
+            if ($hasSeq) {
+                $builder->select('sid, station, seq');
+                $builder->orderBy('seq', 'ASC');
+            } else {
+                $builder->select('sid, station');
+                // Fallback alphabetical only if no legacy file and no seq
+                $builder->orderBy('station', 'ASC');
+            }
+
             $query = $builder->get();
             $rows = $query->getResultArray();
-            return array_map(static function ($row) {
+            $result = array_map(static function ($row) {
                 return [
                     'sid'     => (int) $row['sid'],
                     'station' => (string) $row['station'],
                 ];
             }, $rows);
+            return $this->applyConfiguredOrder($line, $result);
         } catch (\Throwable $e) {
             return [];
+        }
+    }
+
+    /**
+     * If a per-line station order is configured, reorder the list to match by SID.
+     * Any stations not listed are appended in their original order.
+     *
+     * @param string $line
+     * @param list<array{sid:int,station:string}> $stations
+     * @return list<array{sid:int,station:string}>
+     */
+    private function applyConfiguredOrder(string $line, array $stations): array
+    {
+        try {
+            $cfg = new \Config\StationOrder();
+            $order = $cfg->orders[$line] ?? [];
+            if (empty($order)) {
+                return $stations;
+            }
+            $index = array_flip($order); // sid => desired index
+            usort($stations, static function ($a, $b) use ($index) {
+                $ia = $index[$a['sid']] ?? PHP_INT_MAX;
+                $ib = $index[$b['sid']] ?? PHP_INT_MAX;
+                if ($ia === $ib) return 0;
+                return $ia <=> $ib;
+            });
+            return $stations;
+        } catch (\Throwable $e) {
+            return $stations; // do nothing on config errors
         }
     }
 
@@ -68,13 +116,27 @@ class StationRepository
      */
     private function parseLegacyFile(string $line): array
     {
-        // Expect repo layout with sibling /stations directory
-        $root = realpath(APPPATH . '../..'); // move from cta-ci-app/app to repo root
-        if (! $root) {
+        // Expect repo layout with sibling /stations directory at repo root
+        // APPPATH points to <repo>/app/, so repo root is one level up.
+        $repoRoot = realpath(APPPATH . '..');
+        if (! $repoRoot) {
             return [];
         }
-        $file = $root . DIRECTORY_SEPARATOR . 'stations' . DIRECTORY_SEPARATOR . $line . '.php';
-        if (! is_readable($file)) {
+
+        // Candidate legacy locations to support archived layouts
+        $candidates = [
+            $repoRoot . DIRECTORY_SEPARATOR . 'stations' . DIRECTORY_SEPARATOR . $line . '.php',
+            $repoRoot . DIRECTORY_SEPARATOR . 'legacy-site' . DIRECTORY_SEPARATOR . 'stations' . DIRECTORY_SEPARATOR . $line . '.php',
+        ];
+
+        $file = null;
+        foreach ($candidates as $path) {
+            if (is_readable($path)) {
+                $file = $path;
+                break;
+            }
+        }
+        if ($file === null) {
             return [];
         }
 
@@ -95,10 +157,6 @@ class StationRepository
                 $stations[] = ['sid' => $sid, 'station' => $name];
             }
         }
-
-        usort($stations, static function ($a, $b) {
-            return strcasecmp($a['station'], $b['station']);
-        });
 
         return $stations;
     }
