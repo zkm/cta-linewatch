@@ -45,7 +45,7 @@
   </header>
   <main>
     <?php if (empty($stations)): ?>
-      <p class="muted">No stations found. Provide <code>stations/<?= esc($line) ?>.json</code> (preferred), a legacy <code>stations/<?= esc($line) ?>.php</code> file, or run DB migrations and populate the <code><?= esc($line) ?></code> table.</p>
+      <p class="muted">No stations found. Provide <code>stations/<?= esc($line) ?>.json</code> (preferred) or run DB migrations and populate the <code><?= esc($line) ?></code> table.</p>
     <?php else: ?>
       <div class="card <?= esc($line) ?>">
         <div class="controls">
