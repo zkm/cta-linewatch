@@ -1,0 +1,38 @@
+# Fly.io app configuration for CTA LineWatch
+# Note: App names are globally unique. If 'cta-linewatch' is taken, change the app name.
+
+app = "cta-linewatch"
+primary_region = "ord" # Chicago
+
+[build]
+  # Dockerfile at repo root; no extra config needed
+
+[env]
+  # You should set CTA_TRAIN_API_KEY via `fly secrets set` (not here)
+  # Optionally set the base URL for CodeIgniter if needed
+  app_baseURL = "https://cta-linewatch.fly.dev/"
+
+[[services]]
+  protocol = "tcp"
+  internal_port = 80
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
+
+  [services.concurrency]
+    type = "requests"
+    soft_limit = 20
+    hard_limit = 40
+
+  [[services.http_checks]]
+    interval = "10s"
+    timeout = "2s"
+    grace_period = "10s"
+    method = "get"
+    path = "/"
+    protocol = "http"
+    tls_skip_verify = false
