@@ -28,7 +28,7 @@ jobs:
         with:
           php-version: '8.2'
           tools: composer
-          extensions: intl, mbstring, curl, dom, gd, json, tokenizer
+          extensions: intl, mbstring, curl, dom, gd, json, tokenizer, sqlite3, pdo_sqlite
 
       - name: Install dependencies
         run: composer install --no-interaction --prefer-dist --no-progress

@@ -20,6 +20,12 @@ class CtaTrainTracker
         $key = function_exists('env') ? env('CTA_TRAIN_API_KEY') : getenv('CTA_TRAIN_API_KEY');
         $this->apiKey = is_string($key) && $key !== '' ? $key : null;
 
+        // Optional base override
+        $base = function_exists('env') ? env('CTA_TRAIN_API_BASE') : getenv('CTA_TRAIN_API_BASE');
+        if (is_string($base) && $base !== '') {
+            $this->baseUrl = $base;
+        }
+
     /** @var CURLRequest $http */
         $http = service('curlrequest');
         $this->http = $http;

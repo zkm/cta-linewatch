@@ -67,3 +67,13 @@
 #--------------------------------------------------------------------
 
 # logger.threshold = 4
+
+#--------------------------------------------------------------------
+# CTA TRAIN TRACKER
+#--------------------------------------------------------------------
+
+# Your CTA Train Tracker API key (do not commit real keys)
+# CTA_TRAIN_API_KEY=
+
+# Optional: override the base URL (defaults to https://lapi.transitchicago.com/api/1.0/ttarrivals.aspx)
+# CTA_TRAIN_API_BASE=

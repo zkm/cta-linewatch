@@ -26,6 +26,14 @@ legacy-site/   # archived legacy site
 2) Environment: copy `env` to `.env` and set `app.baseURL` and any DB settings
 3) Run locally: `php spark serve -port 8080` then visit http://localhost:8080
 
+### Configure CTA Train Tracker
+- Obtain an API key from CTA (Train Tracker): https://www.transitchicago.com/developers/ttdocs/
+- In your `.env` set:
+	- `CTA_TRAIN_API_KEY=your_key_here`
+	- Optionally override the base endpoint (defaults to CTA’s): `CTA_TRAIN_API_BASE=https://lapi.transitchicago.com/api/1.0/ttarrivals.aspx`
+  
+Your key is read by `App\Libraries\CtaTrainTracker` and is never hardcoded.
+
 ## Deploy
 Point your web server DocumentRoot to the `public/` directory at the repository root. Do not point the server at the repo root.
 

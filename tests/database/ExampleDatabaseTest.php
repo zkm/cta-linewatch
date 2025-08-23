@@ -6,10 +6,13 @@ use CodeIgniter\Test\CIUnitTestCase;
 use CodeIgniter\Test\DatabaseTestTrait;
 use Tests\Support\Database\Seeds\ExampleSeeder;
 use Tests\Support\Models\ExampleModel;
+use PHPUnit\Framework\Attributes\RequiresPhpExtension;
 
 /**
  * @internal
+ * @requires extension sqlite3
  */
+#[RequiresPhpExtension('sqlite3')]
 final class ExampleDatabaseTest extends CIUnitTestCase
 {
     use DatabaseTestTrait;
@@ -18,6 +21,9 @@ final class ExampleDatabaseTest extends CIUnitTestCase
 
     public function testModelFindAll(): void
     {
+        if (! extension_loaded('sqlite3')) {
+            $this->markTestSkipped('sqlite3 extension not available.');
+        }
         $model = new ExampleModel();
 
         // Get every row created by ExampleSeeder
@@ -29,6 +35,9 @@ final class ExampleDatabaseTest extends CIUnitTestCase
 
     public function testSoftDeleteLeavesRow(): void
     {
+        if (! extension_loaded('sqlite3')) {
+            $this->markTestSkipped('sqlite3 extension not available.');
+        }
         $model = new ExampleModel();
         $this->setPrivateProperty($model, 'useSoftDeletes', true);
         $this->setPrivateProperty($model, 'tempUseSoftDeletes', true);
