@@ -1,0 +1,33 @@
+<select name="ctl06$ddlStops" id="ctl06_ddlStops">
+	<option value="0">[ Green Line Stops ]</option>
+	<option value="41120">35th-Bronzeville-IIT</option>
+	<option value="41270">43rd</option>
+	<option value="41080">47th</option>
+	<option value="40130">51st</option>
+	<option value="40680">Adams/Wabash</option>
+	<option value="40170">Ashland</option>
+	<option value="40290">Ashland/63rd</option>
+	<option value="41260">Austin</option>
+	<option value="41360">California</option>
+	<option value="40280">Central</option>
+	<option value="40480">Cicero</option>
+	<option value="40380">Clark/Lake</option>
+	<option value="41160">Clinton</option>
+	<option value="41670">Conservatory-Central Park Drive</option>
+	<option value="40720">Cottage Grove</option>
+	<option value="40510">Garfield</option>
+	<option value="40940">Halsted</option>
+	<option value="40020">Harlem/Lake</option>
+	<option value="40300">Indiana</option>
+	<option value="41070">Kedzie</option>
+	<option value="41140">King Drive</option>
+	<option value="40700">Laramie</option>
+	<option value="40640">Madison/Wabash</option>
+	<option value="41510">Morgan</option>
+	<option value="41350">Oak Park</option>
+	<option value="40030">Pulaski</option>
+	<option value="40200">Randolph/Wabash</option>
+	<option value="40610">Ridgeland</option>
+	<option value="41400">Roosevelt</option>
+	<option value="40260">State/Lake</option>
+</select>

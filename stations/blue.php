@@ -1,0 +1,36 @@
+<select name="ctl06$ddlStops" id="ctl06_ddlStops">
+	<option value="0">[ Blue Line Stops ]</option>
+	<option value="41240">Addison</option>
+	<option value="40010">Austin</option>
+	<option value="40060">Belmont</option>
+	<option value="40570">California</option>
+	<option value="41410">Chicago</option>
+	<option value="40970">Cicero</option>
+	<option value="40380">Clark/Lake</option>
+	<option value="40430">Clinton</option>
+	<option value="40230">Cumberland</option>
+	<option value="40590">Damen</option>
+	<option value="40320">Division</option>
+	<option value="40390">Forest Park</option>
+	<option value="40490">Grand</option>
+	<option value="40980">Harlem (Forest Park Branch)</option>
+	<option value="40750">Harlem (O'Hare Branch)</option>
+	<option value="40810">Illinois Medical District</option>
+	<option value="40550">Irving Park</option>
+	<option value="40070">Jackson</option>
+	<option value="41280">Jefferson Park</option>
+	<option value="40250">Kedzie-Homan</option>
+	<option value="41340">LaSalle</option>
+	<option value="41020">Logan Square</option>
+	<option value="40790">Monroe</option>
+	<option value="41330">Montrose</option>
+	<option value="40890">O'Hare</option>
+	<option value="40180">Oak Park</option>
+	<option value="40920">Pulaski</option>
+	<option value="40470">Racine</option>
+	<option value="40820">Rosemont</option>
+	<option value="40350">UIC-Halsted</option>
+	<option value="40370">Washington</option>
+	<option value="40220">Western (Forest Park Branch)</option>
+	<option value="40670">Western (O'Hare Branch)</option>
+</select>

@@ -1,0 +1,29 @@
+<select name="ctl06$ddlStops" id="ctl06_ddlStops">
+	<option value="0">[ Purple Line Stops ]</option>
+	<option value="40680">Adams/Wabash</option>
+	<option value="40660">Armitage</option>
+	<option value="41320">Belmont</option>
+	<option value="41250">Central</option>
+	<option value="40710">Chicago</option>
+	<option value="40380">Clark/Lake</option>
+	<option value="40050">Davis</option>
+	<option value="40690">Dempster</option>
+	<option value="40530">Diversey</option>
+	<option value="40520">Foster</option>
+	<option value="41220">Fullerton</option>
+	<option value="40850">Harold Washington Library-State/Van Buren</option>
+	<option value="40900">Howard</option>
+	<option value="40160">LaSalle/Van Buren</option>
+	<option value="41050">Linden</option>
+	<option value="40640">Madison/Wabash</option>
+	<option value="40270">Main</option>
+	<option value="40460">Merchandise Mart</option>
+	<option value="40400">Noyes</option>
+	<option value="40040">Quincy</option>
+	<option value="40200">Randolph/Wabash</option>
+	<option value="40800">Sedgwick</option>
+	<option value="40840">South Boulevard</option>
+	<option value="40260">State/Lake</option>
+	<option value="40730">Washington/Wells</option>
+	<option value="41210">Wellington</option>
+</select>

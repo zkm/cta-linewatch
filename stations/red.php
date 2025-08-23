@@ -1,0 +1,36 @@
+<select name="ctl06$ddlStops" id="ctl06_ddlStops">
+	<option value="0">[ Red Line Stops ]</option>
+	<option value="41230">47th</option>
+	<option value="40910">63rd</option>
+	<option value="40990">69th</option>
+	<option value="40240">79th</option>
+	<option value="41430">87th</option>
+	<option value="40450">95th/Dan Ryan</option>
+	<option value="41420">Addison</option>
+	<option value="41200">Argyle</option>
+	<option value="41320">Belmont</option>
+	<option value="40340">Berwyn</option>
+	<option value="41380">Bryn Mawr</option>
+	<option value="41000">Cermak-Chinatown</option>
+	<option value="41450">Chicago</option>
+	<option value="40630">Clark/Division</option>
+	<option value="41220">Fullerton</option>
+	<option value="41170">Garfield</option>
+	<option value="40330">Grand</option>
+	<option value="40760">Granville</option>
+	<option value="41490">Harrison</option>
+	<option value="40900">Howard</option>
+	<option value="40560">Jackson</option>
+	<option value="41190">Jarvis</option>
+	<option value="41660">Lake</option>
+	<option value="40770">Lawrence</option>
+	<option value="41300">Loyola</option>
+	<option value="41090">Monroe</option>
+	<option value="40100">Morse</option>
+	<option value="40650">North/Clybourn</option>
+	<option value="41400">Roosevelt</option>
+	<option value="40080">Sheridan</option>
+	<option value="40190">Sox-35th</option>
+	<option value="40880">Thorndale</option>
+	<option value="40540">Wilson</option>
+</select>
