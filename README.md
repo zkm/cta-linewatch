@@ -1,6 +1,6 @@
-# CTA API (CodeIgniter 4)
+# CTA LineWatch (CodeIgniter 4)
 
-This repository hosts the CTA API application built on CodeIgniter 4. The legacy PHP site has been archived into `legacy-site/`, and the CodeIgniter app now lives at the repository root.
+This repository hosts CTA LineWatch — an unofficial Chicago CTA 'L' arrivals and lines API — built on CodeIgniter 4. The legacy PHP site has been archived into `legacy-site/`, and the CodeIgniter app now lives at the repository root.
 
 See `MIGRATION.md` for details of the restructure.
 
@@ -31,8 +31,8 @@ Point your web server DocumentRoot to the `public/` directory at the repository 
 
 ### Apache (vhost excerpt)
 ```
-DocumentRoot /var/www/cta-api/public
-<Directory /var/www/cta-api/public>
+DocumentRoot /var/www/cta-linewatch/public
+<Directory /var/www/cta-linewatch/public>
 	AllowOverride All
 	Require all granted
 </Directory>
@@ -40,7 +40,7 @@ DocumentRoot /var/www/cta-api/public
 
 ### Nginx (server block excerpt)
 ```
-root /var/www/cta-api/public;
+root /var/www/cta-linewatch/public;
 index index.php index.html;
 location / { try_files $uri $uri/ /index.php?$query_string; }
 location ~ \.php$ { include fastcgi_params; fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name; fastcgi_pass php-fpm; }

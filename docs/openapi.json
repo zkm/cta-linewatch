@@ -1,12 +1,12 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "CTA API",
-    "description": "Chicago Transit Authority API built with CodeIgniter 4",
+    "title": "CTA LineWatch",
+    "description": "Unofficial Chicago CTA 'L' arrivals and lines API (CodeIgniter 4)",
     "version": "1.0.0",
     "contact": {
-      "name": "CTA API",
-      "url": "https://github.com/zkm/cta-api"
+      "name": "CTA LineWatch",
+      "url": "https://github.com/zkm/cta-linewatch"
     }
   },
   "servers": [

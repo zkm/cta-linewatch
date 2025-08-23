@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Release helper script for CTA API
+# Release helper script for CTA LineWatch
 # Usage: ./scripts/release.sh [major|minor|patch] [version]
 
 set -e
@@ -190,4 +190,4 @@ log_info "GitHub Actions will now build and create the release automatically."
 log_info "Check the Actions tab in your GitHub repository for progress."
 
 echo
-log_info "Release URL will be: https://github.com/zkm/cta-api/releases/tag/$NEW_TAG"
+log_info "Release URL will be: https://github.com/zkm/cta-linewatch/releases/tag/$NEW_TAG"

@@ -17,7 +17,7 @@ cat > docs/index.html << 'EOF'
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CTA API Documentation</title>
+    <title>CTA LineWatch Documentation</title>
     <style>
         body { 
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -88,12 +88,12 @@ cat > docs/index.html << 'EOF'
 </head>
 <body>
     <div class="header">
-        <h1>🚊 CTA API Documentation</h1>
-        <p>Chicago Transit Authority API built with CodeIgniter 4</p>
+    <h1>🚊 CTA LineWatch Documentation</h1>
+    <p>Unofficial Chicago CTA 'L' arrivals and lines API (CodeIgniter 4)</p>
     </div>
     
     <h2>📖 Overview</h2>
-    <p>This API provides access to Chicago Transit Authority (CTA) train data including station information, arrival times, and line details. Built using the CodeIgniter 4 framework.</p>
+    <p>This API provides access to Chicago Transit Authority (CTA) train data including station information, arrival times, and line details. Built using the CodeIgniter 4 framework. Not affiliated with or endorsed by the CTA.</p>
     
     <h2>🌐 Base URL</h2>
     <pre>https://your-domain.com/</pre>
@@ -173,9 +173,9 @@ cat > docs/index.html << 'EOF'
     
     <h2>🔗 Links</h2>
     <ul>
-        <li><a href="https://github.com/zkm/cta-api">📁 GitHub Repository</a></li>
+    <li><a href="https://github.com/zkm/cta-linewatch">📁 GitHub Repository</a></li>
         <li><a href="./openapi.json">📄 OpenAPI Specification (JSON)</a></li>
-        <li><a href="https://editor.swagger.io/?url=https://zkm.github.io/cta-api/openapi.json">🔧 Interactive API Explorer</a></li>
+    <li><a href="https://editor.swagger.io/?url=https://zkm.github.io/cta-linewatch/openapi.json">🔧 Interactive API Explorer</a></li>
         <li><a href="https://codeigniter4.github.io/CodeIgniter4/">📚 CodeIgniter 4 Documentation</a></li>
         <li><a href="https://www.transitchicago.com/developers/">🔌 CTA Developer Resources</a></li>
     </ul>

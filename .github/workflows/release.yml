@@ -129,17 +129,17 @@ jobs:
           
           # Create archive
           cd release-build
-          tar -czf ../cta-api-${{ steps.version.outputs.version }}.tar.gz .
+          tar -czf ../cta-linewatch-${{ steps.version.outputs.version }}.tar.gz .
           cd ..
-          zip -r cta-api-${{ steps.version.outputs.version }}.zip release-build/
+          zip -r cta-linewatch-${{ steps.version.outputs.version }}.zip release-build/
 
       - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:
           tag: ${{ steps.version.outputs.version }}
-          name: CTA API ${{ steps.version.outputs.version }}
+          name: CTA LineWatch ${{ steps.version.outputs.version }}
           body: |
-            # CTA API Release ${{ steps.version.outputs.version }}
+            # CTA LineWatch Release ${{ steps.version.outputs.version }}
             
             ${{ steps.changelog.outputs.changelog }}
             
@@ -152,8 +152,8 @@ jobs:
             
             ## API Documentation
             
-            - [Online Documentation](https://zkm.github.io/cta-api/)
-            - [OpenAPI Specification](https://zkm.github.io/cta-api/openapi.json)
+            - [Online Documentation](https://zkm.github.io/cta-linewatch/)
+            - [OpenAPI Specification](https://zkm.github.io/cta-linewatch/openapi.json)
             
             ## Requirements
             
@@ -163,11 +163,11 @@ jobs:
             
             ---
             
-            **Full Changelog**: https://github.com/zkm/cta-api/compare/${{ steps.version.outputs.version }}...HEAD
+            **Full Changelog**: https://github.com/zkm/cta-linewatch/compare/${{ steps.version.outputs.version }}...HEAD
           
           artifacts: |
-            cta-api-${{ steps.version.outputs.version }}.tar.gz
-            cta-api-${{ steps.version.outputs.version }}.zip
+            cta-linewatch-${{ steps.version.outputs.version }}.tar.gz
+            cta-linewatch-${{ steps.version.outputs.version }}.zip
           
           draft: false
           prerelease: false

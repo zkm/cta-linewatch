@@ -2,7 +2,7 @@
 
 ## Supported Versions
 
-The following versions of CTA API are currently supported with security updates:
+The following versions of CTA LineWatch are currently supported with security updates:
 
 | Version | Supported          |
 | ------- | ------------------ |
@@ -11,7 +11,7 @@ The following versions of CTA API are currently supported with security updates:
 
 ## Reporting a Vulnerability
 
-If you discover a security vulnerability in the CTA API, please report it responsibly:
+If you discover a security vulnerability in CTA LineWatch, please report it responsibly:
 
 1. **Do NOT** create a public GitHub issue for security vulnerabilities
 2. Email security concerns to: [Your Email] or create a private security advisory
@@ -33,7 +33,7 @@ If you discover a security vulnerability in the CTA API, please report it respon
 
 ## Security Best Practices
 
-When deploying the CTA API:
+When deploying CTA LineWatch:
 
 - Always use HTTPS in production
 - Keep PHP and dependencies updated
