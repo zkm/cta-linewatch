@@ -54,6 +54,31 @@ location / { try_files $uri $uri/ /index.php?$query_string; }
 location ~ \.php$ { include fastcgi_params; fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name; fastcgi_pass php-fpm; }
 ```
 
+## Docker
+
+Quick local run (Apache + PHP 8.2):
+
+```bash
+docker compose up --build -d
+```
+
+Then open http://localhost:8080
+
+Environment variables:
+- `CTA_TRAIN_API_KEY` (required) – your CTA Train Tracker key
+- `CTA_TRAIN_API_BASE` (optional) – override upstream arrivals endpoint
+
+To pass your key on startup:
+
+```bash
+CTA_TRAIN_API_KEY=your_key_here docker compose up --build -d
+```
+
+Production notes:
+- Provide secrets via your platform’s secret store (do not bake keys into images).
+- Place a reverse proxy (e.g., Cloudflare, Nginx) in front as needed.
+- Ensure `writable/` is persisted and owned by the web user.
+
 ## Requirements
 PHP 8.1+ with intl and mbstring extensions. See CodeIgniter 4 user guide for details.
 

@@ -1,0 +1,15 @@
+.git
+.github
+vendor/bin
+node_modules
+writable/logs/*
+writable/cache/*
+writable/debugbar/*
+writable/session/*
+.env
+tests
+builds
+scripts
+.DS_Store
+*.log
+*.swp

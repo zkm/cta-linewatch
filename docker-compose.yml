@@ -1,0 +1,18 @@
+version: "3.8"
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    environment:
+      # Set your key at runtime or via .env file (compose reads .env by default)
+      # This will be visible in container env; prefer secrets in production.
+      CTA_TRAIN_API_KEY: ${CTA_TRAIN_API_KEY:-}
+      # Optionally override base URL
+      CTA_TRAIN_API_BASE: ${CTA_TRAIN_API_BASE:-}
+      # CodeIgniter base URL (adjust if using a domain)
+      app_baseURL: http://localhost:8080/
+    volumes:
+      # Persist writable dir across rebuilds
+      - ./writable:/var/www/html/writable
+    restart: unless-stopped
