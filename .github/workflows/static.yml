@@ -1,0 +1,60 @@
+name: Static Checks
+
+on:
+  push:
+    branches: [ master, main ]
+  pull_request:
+    branches: [ "**" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  phpcs:
+    name: PHPCS
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+      - name: Ensure PHPCS is available
+        run: |
+          if [ ! -f vendor/bin/phpcs ]; then
+            composer require --no-interaction --dev squizlabs/php_codesniffer:^3.10
+          fi
+      - name: Run PHPCS
+        run: |
+          if [ -f phpcs.xml ] || [ -f phpcs.xml.dist ]; then
+            vendor/bin/phpcs -q
+          else
+            vendor/bin/phpcs -q --standard=PSR12 --ignore=vendor .
+          fi
+
+  phpstan:
+    name: PHPStan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          tools: composer
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist --no-progress
+      - name: Ensure PHPStan is available
+        run: |
+          if [ ! -f vendor/bin/phpstan ]; then
+            composer require --no-interaction --dev phpstan/phpstan:^1.11
+          fi
+      - name: Run PHPStan
+        run: |
+          if [ -f phpstan.neon ] || [ -f phpstan.neon.dist ]; then
+            vendor/bin/phpstan analyse --no-progress
+          else
+            vendor/bin/phpstan analyse app --level=max --no-progress || vendor/bin/phpstan analyse app --level=7 --no-progress
+          fi
