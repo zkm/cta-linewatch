@@ -40,20 +40,13 @@ jobs:
 
       - name: Create documentation site
         run: |
-          # Create docs directory
-          mkdir -p docs
-          
           # Copy README as main page
+          mkdir -p docs
           cp README.md docs/index.md
           
           # Copy station data for reference
           if [ -d "stations" ]; then
             cp -r stations docs/
-          fi
-          
-          # Copy OpenAPI spec if it exists
-          if [ -f "docs/openapi.json" ]; then
-            cp docs/openapi.json docs/
           fi
           
           # Run documentation generation script
