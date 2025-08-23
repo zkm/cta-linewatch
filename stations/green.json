@@ -1,0 +1,122 @@
+[
+    {
+        "sid": 41120,
+        "station": "35th-Bronzeville-IIT"
+    },
+    {
+        "sid": 41270,
+        "station": "43rd"
+    },
+    {
+        "sid": 41080,
+        "station": "47th"
+    },
+    {
+        "sid": 40130,
+        "station": "51st"
+    },
+    {
+        "sid": 40680,
+        "station": "Adams/Wabash"
+    },
+    {
+        "sid": 40170,
+        "station": "Ashland"
+    },
+    {
+        "sid": 40290,
+        "station": "Ashland/63rd"
+    },
+    {
+        "sid": 41260,
+        "station": "Austin"
+    },
+    {
+        "sid": 41360,
+        "station": "California"
+    },
+    {
+        "sid": 40280,
+        "station": "Central"
+    },
+    {
+        "sid": 40480,
+        "station": "Cicero"
+    },
+    {
+        "sid": 40380,
+        "station": "Clark/Lake"
+    },
+    {
+        "sid": 41160,
+        "station": "Clinton"
+    },
+    {
+        "sid": 41670,
+        "station": "Conservatory-Central Park Drive"
+    },
+    {
+        "sid": 40720,
+        "station": "Cottage Grove"
+    },
+    {
+        "sid": 40510,
+        "station": "Garfield"
+    },
+    {
+        "sid": 40940,
+        "station": "Halsted"
+    },
+    {
+        "sid": 40020,
+        "station": "Harlem/Lake"
+    },
+    {
+        "sid": 40300,
+        "station": "Indiana"
+    },
+    {
+        "sid": 41070,
+        "station": "Kedzie"
+    },
+    {
+        "sid": 41140,
+        "station": "King Drive"
+    },
+    {
+        "sid": 40700,
+        "station": "Laramie"
+    },
+    {
+        "sid": 40640,
+        "station": "Madison/Wabash"
+    },
+    {
+        "sid": 41510,
+        "station": "Morgan"
+    },
+    {
+        "sid": 41350,
+        "station": "Oak Park"
+    },
+    {
+        "sid": 40030,
+        "station": "Pulaski"
+    },
+    {
+        "sid": 40200,
+        "station": "Randolph/Wabash"
+    },
+    {
+        "sid": 40610,
+        "station": "Ridgeland"
+    },
+    {
+        "sid": 41400,
+        "station": "Roosevelt"
+    },
+    {
+        "sid": 40260,
+        "station": "State/Lake"
+    }
+]

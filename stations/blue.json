@@ -1,0 +1,134 @@
+[
+    {
+        "sid": 41240,
+        "station": "Addison"
+    },
+    {
+        "sid": 40010,
+        "station": "Austin"
+    },
+    {
+        "sid": 40060,
+        "station": "Belmont"
+    },
+    {
+        "sid": 40570,
+        "station": "California"
+    },
+    {
+        "sid": 41410,
+        "station": "Chicago"
+    },
+    {
+        "sid": 40970,
+        "station": "Cicero"
+    },
+    {
+        "sid": 40380,
+        "station": "Clark/Lake"
+    },
+    {
+        "sid": 40430,
+        "station": "Clinton"
+    },
+    {
+        "sid": 40230,
+        "station": "Cumberland"
+    },
+    {
+        "sid": 40590,
+        "station": "Damen"
+    },
+    {
+        "sid": 40320,
+        "station": "Division"
+    },
+    {
+        "sid": 40390,
+        "station": "Forest Park"
+    },
+    {
+        "sid": 40490,
+        "station": "Grand"
+    },
+    {
+        "sid": 40980,
+        "station": "Harlem (Forest Park Branch)"
+    },
+    {
+        "sid": 40750,
+        "station": "Harlem (O'Hare Branch)"
+    },
+    {
+        "sid": 40810,
+        "station": "Illinois Medical District"
+    },
+    {
+        "sid": 40550,
+        "station": "Irving Park"
+    },
+    {
+        "sid": 40070,
+        "station": "Jackson"
+    },
+    {
+        "sid": 41280,
+        "station": "Jefferson Park"
+    },
+    {
+        "sid": 40250,
+        "station": "Kedzie-Homan"
+    },
+    {
+        "sid": 41340,
+        "station": "LaSalle"
+    },
+    {
+        "sid": 41020,
+        "station": "Logan Square"
+    },
+    {
+        "sid": 40790,
+        "station": "Monroe"
+    },
+    {
+        "sid": 41330,
+        "station": "Montrose"
+    },
+    {
+        "sid": 40890,
+        "station": "O'Hare"
+    },
+    {
+        "sid": 40180,
+        "station": "Oak Park"
+    },
+    {
+        "sid": 40920,
+        "station": "Pulaski"
+    },
+    {
+        "sid": 40470,
+        "station": "Racine"
+    },
+    {
+        "sid": 40820,
+        "station": "Rosemont"
+    },
+    {
+        "sid": 40350,
+        "station": "UIC-Halsted"
+    },
+    {
+        "sid": 40370,
+        "station": "Washington"
+    },
+    {
+        "sid": 40220,
+        "station": "Western (Forest Park Branch)"
+    },
+    {
+        "sid": 40670,
+        "station": "Western (O'Hare Branch)"
+    }
+]

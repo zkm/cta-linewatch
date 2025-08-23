@@ -3,11 +3,19 @@
 namespace App\Libraries;
 
 use CodeIgniter\Database\BaseConnection;
+use CodeIgniter\Cache\CacheInterface;
+use Config\Services;
 
 class StationRepository
 {
     /** @var BaseConnection|null */
     private $db = null; // Lazy to avoid requiring mysqli unless needed
+
+    /** @var CacheInterface|null */
+    private $cache = null;
+
+    /** @var array<string, list<array{sid:int,station:string}>> */
+    private array $memo = [];
 
     public function __construct()
     {
@@ -29,13 +37,70 @@ class StationRepository
             return [];
         }
 
-        // 1) Try to parse from legacy HTML select file
-        $fromFile = $this->parseLegacyFile($line);
-        if (! empty($fromFile)) {
-            return $this->applyConfiguredOrder($line, $fromFile);
+        // Memoized per request
+        if (isset($this->memo[$line])) {
+            return $this->memo[$line];
         }
 
-        // 2) Fallback to DB if available/configured
+        // Config for data source and caching
+        $cfg = new \Config\Stations();
+
+        // Cache lookup
+        if ($cfg->enableCache) {
+            try {
+                $this->cache = $this->cache ?? Services::cache();
+                $cached = $this->cache?->get($this->cacheKey($line));
+                if (is_array($cached)) {
+                    $this->memo[$line] = $cached;
+                    return $cached;
+                }
+            } catch (\Throwable $e) {
+                // ignore cache errors
+            }
+        }
+
+        // Source priority: json -> html -> db by default (configurable)
+        $stations = [];
+        foreach ($cfg->sourcePriority as $source) {
+            if ($source === 'json') {
+                $stations = $this->parseJson($line);
+            } elseif ($source === 'html') {
+                $stations = $this->parseLegacyFile($line);
+            } elseif ($source === 'db') {
+                $stations = $this->fetchFromDb($line);
+            }
+            if (! empty($stations)) {
+                break;
+            }
+        }
+
+        $stations = $this->applyConfiguredOrder($line, $stations);
+
+        if ($cfg->enableCache && ! empty($stations)) {
+            try {
+                $this->cache = $this->cache ?? Services::cache();
+                $this->cache?->save($this->cacheKey($line), $stations, $cfg->cacheTTL);
+            } catch (\Throwable $e) {
+                // ignore cache errors
+            }
+        }
+
+        $this->memo[$line] = $stations;
+        return $stations;
+    }
+
+    private function cacheKey(string $line): string
+    {
+        return 'stations:' . $line;
+    }
+
+    /**
+     * DB fetch extracted to allow sourcePriority selection.
+     *
+     * @return list<array{sid:int,station:string}>
+     */
+    private function fetchFromDb(string $line): array
+    {
         try {
             /** @var BaseConnection $db */
             $db = $this->db ?? (\Config\Database::connect());
@@ -62,7 +127,6 @@ class StationRepository
                 $builder->orderBy('seq', 'ASC');
             } else {
                 $builder->select('sid, station');
-                // Fallback alphabetical only if no legacy file and no seq
                 $builder->orderBy('station', 'ASC');
             }
 
@@ -74,7 +138,7 @@ class StationRepository
                     'station' => (string) $row['station'],
                 ];
             }, $rows);
-            return $this->applyConfiguredOrder($line, $result);
+            return $result;
         } catch (\Throwable $e) {
             return [];
         }
@@ -154,6 +218,69 @@ class StationRepository
                 if ($sid === 0 || $name === '' || stripos($name, '[') !== false) {
                     continue; // skip the header option like [ Blue Line Stops ]
                 }
+                $stations[] = ['sid' => $sid, 'station' => $name];
+            }
+        }
+
+        return $stations;
+    }
+
+    /**
+     * Parse stations from JSON.
+     * Supports per-line JSON (stations/{line}.json) or combined stations/stations.json.
+     *
+     * @return list<array{sid:int,station:string}>
+     */
+    private function parseJson(string $line): array
+    {
+        $repoRoot = realpath(APPPATH . '..');
+        if (! $repoRoot) {
+            return [];
+        }
+
+        $dir = $repoRoot . DIRECTORY_SEPARATOR . 'stations' . DIRECTORY_SEPARATOR;
+        $perLine = $dir . $line . '.json';
+        $combined = $dir . 'stations.json';
+
+        $data = null;
+
+        if (is_readable($perLine)) {
+            $json = @file_get_contents($perLine);
+            if ($json !== false) {
+                $data = json_decode($json, true);
+            }
+        }
+
+        if ($data === null && is_readable($combined)) {
+            $json = @file_get_contents($combined);
+            if ($json !== false) {
+                $decoded = json_decode($json, true);
+                if (is_array($decoded)) {
+                    if (array_key_exists($line, $decoded) && is_array($decoded[$line])) {
+                        $data = $decoded[$line];
+                    } else {
+                        $subset = [];
+                        foreach ($decoded as $entry) {
+                            if (is_array($entry) && ($entry['line'] ?? null) === $line) {
+                                $subset[] = ['sid' => $entry['sid'] ?? null, 'station' => $entry['station'] ?? null];
+                            }
+                        }
+                        $data = $subset;
+                    }
+                }
+            }
+        }
+
+        if (! is_array($data)) {
+            return [];
+        }
+
+        $stations = [];
+        foreach ($data as $row) {
+            if (! is_array($row)) continue;
+            $sid = isset($row['sid']) ? (int) $row['sid'] : 0;
+            $name = isset($row['station']) ? (string) $row['station'] : '';
+            if ($sid > 0 && $name !== '') {
                 $stations[] = ['sid' => $sid, 'station' => $name];
             }
         }

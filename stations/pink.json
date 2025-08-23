@@ -1,0 +1,94 @@
+[
+    {
+        "sid": 40830,
+        "station": "18th"
+    },
+    {
+        "sid": 40580,
+        "station": "54th/Cermak"
+    },
+    {
+        "sid": 40680,
+        "station": "Adams/Wabash"
+    },
+    {
+        "sid": 40170,
+        "station": "Ashland"
+    },
+    {
+        "sid": 40440,
+        "station": "California"
+    },
+    {
+        "sid": 40780,
+        "station": "Central Park"
+    },
+    {
+        "sid": 40420,
+        "station": "Cicero"
+    },
+    {
+        "sid": 40380,
+        "station": "Clark/Lake"
+    },
+    {
+        "sid": 41160,
+        "station": "Clinton"
+    },
+    {
+        "sid": 40210,
+        "station": "Damen"
+    },
+    {
+        "sid": 40850,
+        "station": "Harold Washington Library-State/Van Buren"
+    },
+    {
+        "sid": 41040,
+        "station": "Kedzie"
+    },
+    {
+        "sid": 40600,
+        "station": "Kostner"
+    },
+    {
+        "sid": 40160,
+        "station": "LaSalle/Van Buren"
+    },
+    {
+        "sid": 40640,
+        "station": "Madison/Wabash"
+    },
+    {
+        "sid": 41510,
+        "station": "Morgan"
+    },
+    {
+        "sid": 41030,
+        "station": "Polk"
+    },
+    {
+        "sid": 40150,
+        "station": "Pulaski"
+    },
+    {
+        "sid": 40040,
+        "station": "Quincy"
+    },
+    {
+        "sid": 40200,
+        "station": "Randolph/Wabash"
+    },
+    {
+        "sid": 40260,
+        "station": "State/Lake"
+    },
+    {
+        "sid": 40730,
+        "station": "Washington/Wells"
+    },
+    {
+        "sid": 40740,
+        "station": "Western"
+    }
+]

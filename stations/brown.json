@@ -1,0 +1,86 @@
+[
+    {
+        "sid": 41290,
+        "station": "Kimball"
+    },
+    {
+        "sid": 41180,
+        "station": "Kedzie"
+    },
+    {
+        "sid": 40870,
+        "station": "Francisco"
+    },
+    {
+        "sid": 41010,
+        "station": "Rockwell"
+    },
+    {
+        "sid": 41480,
+        "station": "Western"
+    },
+    {
+        "sid": 41500,
+        "station": "Montrose"
+    },
+    {
+        "sid": 41460,
+        "station": "Irving Park"
+    },
+    {
+        "sid": 41440,
+        "station": "Addison"
+    },
+    {
+        "sid": 41310,
+        "station": "Paulina"
+    },
+    {
+        "sid": 40360,
+        "station": "Southport"
+    },
+    {
+        "sid": 41320,
+        "station": "Belmont"
+    },
+    {
+        "sid": 41210,
+        "station": "Wellington"
+    },
+    {
+        "sid": 40530,
+        "station": "Diversey"
+    },
+    {
+        "sid": 41220,
+        "station": "Fullerton"
+    },
+    {
+        "sid": 40660,
+        "station": "Armitage"
+    },
+    {
+        "sid": 40800,
+        "station": "Sedgwick"
+    },
+    {
+        "sid": 40710,
+        "station": "Chicago"
+    },
+    {
+        "sid": 40460,
+        "station": "Merchandise Mart"
+    },
+    {
+        "sid": 40730,
+        "station": "Washington/Wells"
+    },
+    {
+        "sid": 40040,
+        "station": "Quincy"
+    },
+    {
+        "sid": 40160,
+        "station": "LaSalle/Van Buren"
+    }
+]

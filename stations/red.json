@@ -1,0 +1,134 @@
+[
+    {
+        "sid": 41230,
+        "station": "47th"
+    },
+    {
+        "sid": 40910,
+        "station": "63rd"
+    },
+    {
+        "sid": 40990,
+        "station": "69th"
+    },
+    {
+        "sid": 40240,
+        "station": "79th"
+    },
+    {
+        "sid": 41430,
+        "station": "87th"
+    },
+    {
+        "sid": 40450,
+        "station": "95th/Dan Ryan"
+    },
+    {
+        "sid": 41420,
+        "station": "Addison"
+    },
+    {
+        "sid": 41200,
+        "station": "Argyle"
+    },
+    {
+        "sid": 41320,
+        "station": "Belmont"
+    },
+    {
+        "sid": 40340,
+        "station": "Berwyn"
+    },
+    {
+        "sid": 41380,
+        "station": "Bryn Mawr"
+    },
+    {
+        "sid": 41000,
+        "station": "Cermak-Chinatown"
+    },
+    {
+        "sid": 41450,
+        "station": "Chicago"
+    },
+    {
+        "sid": 40630,
+        "station": "Clark/Division"
+    },
+    {
+        "sid": 41220,
+        "station": "Fullerton"
+    },
+    {
+        "sid": 41170,
+        "station": "Garfield"
+    },
+    {
+        "sid": 40330,
+        "station": "Grand"
+    },
+    {
+        "sid": 40760,
+        "station": "Granville"
+    },
+    {
+        "sid": 41490,
+        "station": "Harrison"
+    },
+    {
+        "sid": 40900,
+        "station": "Howard"
+    },
+    {
+        "sid": 40560,
+        "station": "Jackson"
+    },
+    {
+        "sid": 41190,
+        "station": "Jarvis"
+    },
+    {
+        "sid": 41660,
+        "station": "Lake"
+    },
+    {
+        "sid": 40770,
+        "station": "Lawrence"
+    },
+    {
+        "sid": 41300,
+        "station": "Loyola"
+    },
+    {
+        "sid": 41090,
+        "station": "Monroe"
+    },
+    {
+        "sid": 40100,
+        "station": "Morse"
+    },
+    {
+        "sid": 40650,
+        "station": "North/Clybourn"
+    },
+    {
+        "sid": 41400,
+        "station": "Roosevelt"
+    },
+    {
+        "sid": 40080,
+        "station": "Sheridan"
+    },
+    {
+        "sid": 40190,
+        "station": "Sox-35th"
+    },
+    {
+        "sid": 40880,
+        "station": "Thorndale"
+    },
+    {
+        "sid": 40540,
+        "station": "Wilson"
+    }
+]

@@ -1,0 +1,70 @@
+[
+    {
+        "sid": 40120,
+        "station": "35th/Archer"
+    },
+    {
+        "sid": 40680,
+        "station": "Adams/Wabash"
+    },
+    {
+        "sid": 41060,
+        "station": "Ashland"
+    },
+    {
+        "sid": 40380,
+        "station": "Clark/Lake"
+    },
+    {
+        "sid": 41130,
+        "station": "Halsted"
+    },
+    {
+        "sid": 40850,
+        "station": "Harold Washington Library-State/Van Buren"
+    },
+    {
+        "sid": 41150,
+        "station": "Kedzie"
+    },
+    {
+        "sid": 40160,
+        "station": "LaSalle/Van Buren"
+    },
+    {
+        "sid": 40640,
+        "station": "Madison/Wabash"
+    },
+    {
+        "sid": 40930,
+        "station": "Midway"
+    },
+    {
+        "sid": 40960,
+        "station": "Pulaski"
+    },
+    {
+        "sid": 40040,
+        "station": "Quincy"
+    },
+    {
+        "sid": 40200,
+        "station": "Randolph/Wabash"
+    },
+    {
+        "sid": 41400,
+        "station": "Roosevelt"
+    },
+    {
+        "sid": 40260,
+        "station": "State/Lake"
+    },
+    {
+        "sid": 40730,
+        "station": "Washington/Wells"
+    },
+    {
+        "sid": 40310,
+        "station": "Western"
+    }
+]

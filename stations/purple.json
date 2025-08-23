@@ -1,0 +1,106 @@
+[
+    {
+        "sid": 40680,
+        "station": "Adams/Wabash"
+    },
+    {
+        "sid": 40660,
+        "station": "Armitage"
+    },
+    {
+        "sid": 41320,
+        "station": "Belmont"
+    },
+    {
+        "sid": 41250,
+        "station": "Central"
+    },
+    {
+        "sid": 40710,
+        "station": "Chicago"
+    },
+    {
+        "sid": 40380,
+        "station": "Clark/Lake"
+    },
+    {
+        "sid": 40050,
+        "station": "Davis"
+    },
+    {
+        "sid": 40690,
+        "station": "Dempster"
+    },
+    {
+        "sid": 40530,
+        "station": "Diversey"
+    },
+    {
+        "sid": 40520,
+        "station": "Foster"
+    },
+    {
+        "sid": 41220,
+        "station": "Fullerton"
+    },
+    {
+        "sid": 40850,
+        "station": "Harold Washington Library-State/Van Buren"
+    },
+    {
+        "sid": 40900,
+        "station": "Howard"
+    },
+    {
+        "sid": 40160,
+        "station": "LaSalle/Van Buren"
+    },
+    {
+        "sid": 41050,
+        "station": "Linden"
+    },
+    {
+        "sid": 40640,
+        "station": "Madison/Wabash"
+    },
+    {
+        "sid": 40270,
+        "station": "Main"
+    },
+    {
+        "sid": 40460,
+        "station": "Merchandise Mart"
+    },
+    {
+        "sid": 40400,
+        "station": "Noyes"
+    },
+    {
+        "sid": 40040,
+        "station": "Quincy"
+    },
+    {
+        "sid": 40200,
+        "station": "Randolph/Wabash"
+    },
+    {
+        "sid": 40800,
+        "station": "Sedgwick"
+    },
+    {
+        "sid": 40840,
+        "station": "South Boulevard"
+    },
+    {
+        "sid": 40260,
+        "station": "State/Lake"
+    },
+    {
+        "sid": 40730,
+        "station": "Washington/Wells"
+    },
+    {
+        "sid": 41210,
+        "station": "Wellington"
+    }
+]

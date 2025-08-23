@@ -1,0 +1,762 @@
+{
+    "blue": [
+        {
+            "sid": 41240,
+            "station": "Addison"
+        },
+        {
+            "sid": 40010,
+            "station": "Austin"
+        },
+        {
+            "sid": 40060,
+            "station": "Belmont"
+        },
+        {
+            "sid": 40570,
+            "station": "California"
+        },
+        {
+            "sid": 41410,
+            "station": "Chicago"
+        },
+        {
+            "sid": 40970,
+            "station": "Cicero"
+        },
+        {
+            "sid": 40380,
+            "station": "Clark/Lake"
+        },
+        {
+            "sid": 40430,
+            "station": "Clinton"
+        },
+        {
+            "sid": 40230,
+            "station": "Cumberland"
+        },
+        {
+            "sid": 40590,
+            "station": "Damen"
+        },
+        {
+            "sid": 40320,
+            "station": "Division"
+        },
+        {
+            "sid": 40390,
+            "station": "Forest Park"
+        },
+        {
+            "sid": 40490,
+            "station": "Grand"
+        },
+        {
+            "sid": 40980,
+            "station": "Harlem (Forest Park Branch)"
+        },
+        {
+            "sid": 40750,
+            "station": "Harlem (O'Hare Branch)"
+        },
+        {
+            "sid": 40810,
+            "station": "Illinois Medical District"
+        },
+        {
+            "sid": 40550,
+            "station": "Irving Park"
+        },
+        {
+            "sid": 40070,
+            "station": "Jackson"
+        },
+        {
+            "sid": 41280,
+            "station": "Jefferson Park"
+        },
+        {
+            "sid": 40250,
+            "station": "Kedzie-Homan"
+        },
+        {
+            "sid": 41340,
+            "station": "LaSalle"
+        },
+        {
+            "sid": 41020,
+            "station": "Logan Square"
+        },
+        {
+            "sid": 40790,
+            "station": "Monroe"
+        },
+        {
+            "sid": 41330,
+            "station": "Montrose"
+        },
+        {
+            "sid": 40890,
+            "station": "O'Hare"
+        },
+        {
+            "sid": 40180,
+            "station": "Oak Park"
+        },
+        {
+            "sid": 40920,
+            "station": "Pulaski"
+        },
+        {
+            "sid": 40470,
+            "station": "Racine"
+        },
+        {
+            "sid": 40820,
+            "station": "Rosemont"
+        },
+        {
+            "sid": 40350,
+            "station": "UIC-Halsted"
+        },
+        {
+            "sid": 40370,
+            "station": "Washington"
+        },
+        {
+            "sid": 40220,
+            "station": "Western (Forest Park Branch)"
+        },
+        {
+            "sid": 40670,
+            "station": "Western (O'Hare Branch)"
+        }
+    ],
+    "brown": [
+        {
+            "sid": 41290,
+            "station": "Kimball"
+        },
+        {
+            "sid": 41180,
+            "station": "Kedzie"
+        },
+        {
+            "sid": 40870,
+            "station": "Francisco"
+        },
+        {
+            "sid": 41010,
+            "station": "Rockwell"
+        },
+        {
+            "sid": 41480,
+            "station": "Western"
+        },
+        {
+            "sid": 41500,
+            "station": "Montrose"
+        },
+        {
+            "sid": 41460,
+            "station": "Irving Park"
+        },
+        {
+            "sid": 41440,
+            "station": "Addison"
+        },
+        {
+            "sid": 41310,
+            "station": "Paulina"
+        },
+        {
+            "sid": 40360,
+            "station": "Southport"
+        },
+        {
+            "sid": 41320,
+            "station": "Belmont"
+        },
+        {
+            "sid": 41210,
+            "station": "Wellington"
+        },
+        {
+            "sid": 40530,
+            "station": "Diversey"
+        },
+        {
+            "sid": 41220,
+            "station": "Fullerton"
+        },
+        {
+            "sid": 40660,
+            "station": "Armitage"
+        },
+        {
+            "sid": 40800,
+            "station": "Sedgwick"
+        },
+        {
+            "sid": 40710,
+            "station": "Chicago"
+        },
+        {
+            "sid": 40460,
+            "station": "Merchandise Mart"
+        },
+        {
+            "sid": 40730,
+            "station": "Washington/Wells"
+        },
+        {
+            "sid": 40040,
+            "station": "Quincy"
+        },
+        {
+            "sid": 40160,
+            "station": "LaSalle/Van Buren"
+        }
+    ],
+    "green": [
+        {
+            "sid": 41120,
+            "station": "35th-Bronzeville-IIT"
+        },
+        {
+            "sid": 41270,
+            "station": "43rd"
+        },
+        {
+            "sid": 41080,
+            "station": "47th"
+        },
+        {
+            "sid": 40130,
+            "station": "51st"
+        },
+        {
+            "sid": 40680,
+            "station": "Adams/Wabash"
+        },
+        {
+            "sid": 40170,
+            "station": "Ashland"
+        },
+        {
+            "sid": 40290,
+            "station": "Ashland/63rd"
+        },
+        {
+            "sid": 41260,
+            "station": "Austin"
+        },
+        {
+            "sid": 41360,
+            "station": "California"
+        },
+        {
+            "sid": 40280,
+            "station": "Central"
+        },
+        {
+            "sid": 40480,
+            "station": "Cicero"
+        },
+        {
+            "sid": 40380,
+            "station": "Clark/Lake"
+        },
+        {
+            "sid": 41160,
+            "station": "Clinton"
+        },
+        {
+            "sid": 41670,
+            "station": "Conservatory-Central Park Drive"
+        },
+        {
+            "sid": 40720,
+            "station": "Cottage Grove"
+        },
+        {
+            "sid": 40510,
+            "station": "Garfield"
+        },
+        {
+            "sid": 40940,
+            "station": "Halsted"
+        },
+        {
+            "sid": 40020,
+            "station": "Harlem/Lake"
+        },
+        {
+            "sid": 40300,
+            "station": "Indiana"
+        },
+        {
+            "sid": 41070,
+            "station": "Kedzie"
+        },
+        {
+            "sid": 41140,
+            "station": "King Drive"
+        },
+        {
+            "sid": 40700,
+            "station": "Laramie"
+        },
+        {
+            "sid": 40640,
+            "station": "Madison/Wabash"
+        },
+        {
+            "sid": 41510,
+            "station": "Morgan"
+        },
+        {
+            "sid": 41350,
+            "station": "Oak Park"
+        },
+        {
+            "sid": 40030,
+            "station": "Pulaski"
+        },
+        {
+            "sid": 40200,
+            "station": "Randolph/Wabash"
+        },
+        {
+            "sid": 40610,
+            "station": "Ridgeland"
+        },
+        {
+            "sid": 41400,
+            "station": "Roosevelt"
+        },
+        {
+            "sid": 40260,
+            "station": "State/Lake"
+        }
+    ],
+    "orange": [
+        {
+            "sid": 40120,
+            "station": "35th/Archer"
+        },
+        {
+            "sid": 40680,
+            "station": "Adams/Wabash"
+        },
+        {
+            "sid": 41060,
+            "station": "Ashland"
+        },
+        {
+            "sid": 40380,
+            "station": "Clark/Lake"
+        },
+        {
+            "sid": 41130,
+            "station": "Halsted"
+        },
+        {
+            "sid": 40850,
+            "station": "Harold Washington Library-State/Van Buren"
+        },
+        {
+            "sid": 41150,
+            "station": "Kedzie"
+        },
+        {
+            "sid": 40160,
+            "station": "LaSalle/Van Buren"
+        },
+        {
+            "sid": 40640,
+            "station": "Madison/Wabash"
+        },
+        {
+            "sid": 40930,
+            "station": "Midway"
+        },
+        {
+            "sid": 40960,
+            "station": "Pulaski"
+        },
+        {
+            "sid": 40040,
+            "station": "Quincy"
+        },
+        {
+            "sid": 40200,
+            "station": "Randolph/Wabash"
+        },
+        {
+            "sid": 41400,
+            "station": "Roosevelt"
+        },
+        {
+            "sid": 40260,
+            "station": "State/Lake"
+        },
+        {
+            "sid": 40730,
+            "station": "Washington/Wells"
+        },
+        {
+            "sid": 40310,
+            "station": "Western"
+        }
+    ],
+    "pink": [
+        {
+            "sid": 40830,
+            "station": "18th"
+        },
+        {
+            "sid": 40580,
+            "station": "54th/Cermak"
+        },
+        {
+            "sid": 40680,
+            "station": "Adams/Wabash"
+        },
+        {
+            "sid": 40170,
+            "station": "Ashland"
+        },
+        {
+            "sid": 40440,
+            "station": "California"
+        },
+        {
+            "sid": 40780,
+            "station": "Central Park"
+        },
+        {
+            "sid": 40420,
+            "station": "Cicero"
+        },
+        {
+            "sid": 40380,
+            "station": "Clark/Lake"
+        },
+        {
+            "sid": 41160,
+            "station": "Clinton"
+        },
+        {
+            "sid": 40210,
+            "station": "Damen"
+        },
+        {
+            "sid": 40850,
+            "station": "Harold Washington Library-State/Van Buren"
+        },
+        {
+            "sid": 41040,
+            "station": "Kedzie"
+        },
+        {
+            "sid": 40600,
+            "station": "Kostner"
+        },
+        {
+            "sid": 40160,
+            "station": "LaSalle/Van Buren"
+        },
+        {
+            "sid": 40640,
+            "station": "Madison/Wabash"
+        },
+        {
+            "sid": 41510,
+            "station": "Morgan"
+        },
+        {
+            "sid": 41030,
+            "station": "Polk"
+        },
+        {
+            "sid": 40150,
+            "station": "Pulaski"
+        },
+        {
+            "sid": 40040,
+            "station": "Quincy"
+        },
+        {
+            "sid": 40200,
+            "station": "Randolph/Wabash"
+        },
+        {
+            "sid": 40260,
+            "station": "State/Lake"
+        },
+        {
+            "sid": 40730,
+            "station": "Washington/Wells"
+        },
+        {
+            "sid": 40740,
+            "station": "Western"
+        }
+    ],
+    "purple": [
+        {
+            "sid": 40680,
+            "station": "Adams/Wabash"
+        },
+        {
+            "sid": 40660,
+            "station": "Armitage"
+        },
+        {
+            "sid": 41320,
+            "station": "Belmont"
+        },
+        {
+            "sid": 41250,
+            "station": "Central"
+        },
+        {
+            "sid": 40710,
+            "station": "Chicago"
+        },
+        {
+            "sid": 40380,
+            "station": "Clark/Lake"
+        },
+        {
+            "sid": 40050,
+            "station": "Davis"
+        },
+        {
+            "sid": 40690,
+            "station": "Dempster"
+        },
+        {
+            "sid": 40530,
+            "station": "Diversey"
+        },
+        {
+            "sid": 40520,
+            "station": "Foster"
+        },
+        {
+            "sid": 41220,
+            "station": "Fullerton"
+        },
+        {
+            "sid": 40850,
+            "station": "Harold Washington Library-State/Van Buren"
+        },
+        {
+            "sid": 40900,
+            "station": "Howard"
+        },
+        {
+            "sid": 40160,
+            "station": "LaSalle/Van Buren"
+        },
+        {
+            "sid": 41050,
+            "station": "Linden"
+        },
+        {
+            "sid": 40640,
+            "station": "Madison/Wabash"
+        },
+        {
+            "sid": 40270,
+            "station": "Main"
+        },
+        {
+            "sid": 40460,
+            "station": "Merchandise Mart"
+        },
+        {
+            "sid": 40400,
+            "station": "Noyes"
+        },
+        {
+            "sid": 40040,
+            "station": "Quincy"
+        },
+        {
+            "sid": 40200,
+            "station": "Randolph/Wabash"
+        },
+        {
+            "sid": 40800,
+            "station": "Sedgwick"
+        },
+        {
+            "sid": 40840,
+            "station": "South Boulevard"
+        },
+        {
+            "sid": 40260,
+            "station": "State/Lake"
+        },
+        {
+            "sid": 40730,
+            "station": "Washington/Wells"
+        },
+        {
+            "sid": 41210,
+            "station": "Wellington"
+        }
+    ],
+    "red": [
+        {
+            "sid": 41230,
+            "station": "47th"
+        },
+        {
+            "sid": 40910,
+            "station": "63rd"
+        },
+        {
+            "sid": 40990,
+            "station": "69th"
+        },
+        {
+            "sid": 40240,
+            "station": "79th"
+        },
+        {
+            "sid": 41430,
+            "station": "87th"
+        },
+        {
+            "sid": 40450,
+            "station": "95th/Dan Ryan"
+        },
+        {
+            "sid": 41420,
+            "station": "Addison"
+        },
+        {
+            "sid": 41200,
+            "station": "Argyle"
+        },
+        {
+            "sid": 41320,
+            "station": "Belmont"
+        },
+        {
+            "sid": 40340,
+            "station": "Berwyn"
+        },
+        {
+            "sid": 41380,
+            "station": "Bryn Mawr"
+        },
+        {
+            "sid": 41000,
+            "station": "Cermak-Chinatown"
+        },
+        {
+            "sid": 41450,
+            "station": "Chicago"
+        },
+        {
+            "sid": 40630,
+            "station": "Clark/Division"
+        },
+        {
+            "sid": 41220,
+            "station": "Fullerton"
+        },
+        {
+            "sid": 41170,
+            "station": "Garfield"
+        },
+        {
+            "sid": 40330,
+            "station": "Grand"
+        },
+        {
+            "sid": 40760,
+            "station": "Granville"
+        },
+        {
+            "sid": 41490,
+            "station": "Harrison"
+        },
+        {
+            "sid": 40900,
+            "station": "Howard"
+        },
+        {
+            "sid": 40560,
+            "station": "Jackson"
+        },
+        {
+            "sid": 41190,
+            "station": "Jarvis"
+        },
+        {
+            "sid": 41660,
+            "station": "Lake"
+        },
+        {
+            "sid": 40770,
+            "station": "Lawrence"
+        },
+        {
+            "sid": 41300,
+            "station": "Loyola"
+        },
+        {
+            "sid": 41090,
+            "station": "Monroe"
+        },
+        {
+            "sid": 40100,
+            "station": "Morse"
+        },
+        {
+            "sid": 40650,
+            "station": "North/Clybourn"
+        },
+        {
+            "sid": 41400,
+            "station": "Roosevelt"
+        },
+        {
+            "sid": 40080,
+            "station": "Sheridan"
+        },
+        {
+            "sid": 40190,
+            "station": "Sox-35th"
+        },
+        {
+            "sid": 40880,
+            "station": "Thorndale"
+        },
+        {
+            "sid": 40540,
+            "station": "Wilson"
+        }
+    ],
+    "yellow": [
+        {
+            "sid": 40140,
+            "station": "Dempster-Skokie"
+        },
+        {
+            "sid": 40900,
+            "station": "Howard"
+        },
+        {
+            "sid": 41680,
+            "station": "Oakton-Skokie"
+        }
+    ]
+}
