@@ -1,7 +1,17 @@
 # syntax=docker/dockerfile:1
 
 # ---------- Builder: install PHP deps with Composer ----------
-FROM composer:2 AS vendor
+FROM php:8.2-cli AS vendor
+
+# Install Composer and required PHP extensions
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+# Install intl and zip extensions, plus unzip utility
+RUN apt-get update && \
+    apt-get install -y libicu-dev libzip-dev unzip && \
+    docker-php-ext-install intl zip && \
+    rm -rf /var/lib/apt/lists/*
+
 WORKDIR /app
 COPY composer.json composer.lock ./
 RUN composer install --no-dev --no-interaction --prefer-dist --no-progress --optimize-autoloader
@@ -36,6 +46,11 @@ COPY . /var/www/html
 
 # Copy Composer vendor from builder
 COPY --from=vendor /app/vendor /var/www/html/vendor
+
+# Copy env file as .env if it doesn't exist
+RUN if [ -f /var/www/html/env ] && [ ! -f /var/www/html/.env ]; then \
+      cp /var/www/html/env /var/www/html/.env; \
+    fi
 
 # Configure Apache vhost to serve from public/ and route to index.php
 RUN set -eux; \

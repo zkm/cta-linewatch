@@ -7,6 +7,7 @@ services:
     environment:
       # Set your key at runtime or via .env file (compose reads .env by default)
       # This will be visible in container env; prefer secrets in production.
+      CI_ENVIRONMENT: development
       CTA_TRAIN_API_KEY: ${CTA_TRAIN_API_KEY:-}
       # Optionally override base URL
       CTA_TRAIN_API_BASE: ${CTA_TRAIN_API_BASE:-}
@@ -16,3 +17,8 @@ services:
       # Persist writable dir across rebuilds
       - ./writable:/var/www/html/writable
     restart: unless-stopped
+    user: root
+    entrypoint: >
+      sh -c "chown -R www-data:www-data /var/www/html/writable &&
+             chmod -R 775 /var/www/html/writable &&
+             exec docker-php-entrypoint apache2-foreground"
