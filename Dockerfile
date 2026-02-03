@@ -18,7 +18,6 @@ RUN composer install --no-dev --no-interaction --prefer-dist --no-progress --opt
 
 # Copy the rest to ensure classmap can be optimized if needed (optional)
 COPY app app
-COPY vendor vendor
 
 # ---------- Runtime: Apache + PHP ----------
 FROM php:8.2-apache

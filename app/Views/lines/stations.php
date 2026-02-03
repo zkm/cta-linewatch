@@ -27,7 +27,7 @@
   /* Diagram */
   .diagram { display:block; }
   .stops { position:relative; border-left:10px solid var(--line); margin-left:16px; }
-  .stop { position:relative; padding:1rem 1rem 1rem 0; border-bottom:1px solid #2a4365; }
+  .stop { position:relative; padding:1rem; border-bottom:1px solid #2a4365; }
     .stop:last-child { border-bottom:0; }
   .dot { position:absolute; left:-16px; top:calc(50% - 6px); width:12px; height:12px; background:#f7f9fb; border:3px solid var(--line); border-radius:50%; box-shadow:0 0 0 2px #1c2541; }
     .stop-name { font-weight:600; }
