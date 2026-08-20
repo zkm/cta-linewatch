@@ -80,7 +80,7 @@ Production notes:
 - Ensure `writable/` is persisted and owned by the web user.
 
 ## Requirements
-PHP 8.1+ with intl and mbstring extensions. See CodeIgniter 4 user guide for details.
+PHP 8.2+ with intl and mbstring extensions. See CodeIgniter 4 user guide for details.
 
 ## Notes
 - Legacy files remain in `legacy-site/` for reference. Consider server-level 301 redirects from old routes if needed.
