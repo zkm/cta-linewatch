@@ -1,5 +1,17 @@
 # CTA LineWatch (CodeIgniter 4)
 
+[![CI](https://github.com/zkm/cta-linewatch/actions/workflows/ci.yml/badge.svg)](https://github.com/zkm/cta-linewatch/actions/workflows/ci.yml)
+[![Static Checks](https://github.com/zkm/cta-linewatch/actions/workflows/static.yml/badge.svg)](https://github.com/zkm/cta-linewatch/actions/workflows/static.yml)
+[![CodeQL](https://github.com/zkm/cta-linewatch/actions/workflows/codeql.yml/badge.svg)](https://github.com/zkm/cta-linewatch/actions/workflows/codeql.yml)
+[![docs](https://img.shields.io/website?url=https%3A%2F%2Fzkm.github.io%2Fcta-linewatch%2F&label=docs)](https://zkm.github.io/cta-linewatch/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
+![PHP 8.2+](https://img.shields.io/badge/PHP-8.2%2B-777BB4?logo=php&logoColor=white)
+![CodeIgniter 4](https://img.shields.io/badge/CodeIgniter-4-EF4223?logo=codeigniter&logoColor=white)
+![PHPUnit](https://img.shields.io/badge/PHPUnit-3C9CD7)
+![PHPStan](https://img.shields.io/badge/PHPStan-4F5B93)
+![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
+
 This repository hosts CTA LineWatch — an unofficial Chicago CTA 'L' arrivals and lines API — built on CodeIgniter 4. The legacy PHP site has been archived into `legacy-site/`, and the CodeIgniter app now lives at the repository root.
 
 See `MIGRATION.md` for details of the restructure.
